@@ -1,1 +1,1 @@
-BiocManager::install("DESeq2", ask = T)
+# BiocManager::install("DESeq2", ask = T)

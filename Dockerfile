@@ -1,4 +1,4 @@
-FROM ghcr.io/dkfz-unite/docker-rdev-biocmanager:latest AS base
+FROM ghcr.io/dkfz-unite/docker-rdev-deseq2:latest AS base
 
 FROM base AS install
 COPY ./src/install /src
