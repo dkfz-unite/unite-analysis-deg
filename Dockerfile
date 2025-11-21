@@ -1,16 +1,12 @@
-FROM ubuntu:latest as base
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update
-RUN apt-get install -y r-base r-base-dev
+FROM ghcr.io/dkfz-unite/docker-rdev-biocmanager:latest AS base
 
-FROM base as install
+FROM base AS install
 COPY ./src/install /src
 WORKDIR /src
-RUN apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 RUN Rscript install.R
 RUN apt-get clean
 
-FROM install as final
+FROM install AS final
 COPY ./src/run /src
 COPY ./app /app
 WORKDIR /app
