@@ -1,4 +1,4 @@
-# Differential Expression Analysis (DESeq2) Service
+# Differential Gene Expression Analysis (DESeq2) Service
 
 ## General
 DESeq2 analysis application wrapped with web API.
@@ -16,13 +16,13 @@ To configure the application, change environment variables as required in [comma
 ### Docker Compose
 The easiest way to install the application is to use docker-compose:
 - Environment configuration and installation scripts: https://github.com/dkfz-unite/unite-environment
-- DESeq2 analysis service configuration and installation scripts: https://github.com/dkfz-unite/unite-environment/tree/main/applications/unite-analysis-deseq2
+- DESeq2 analysis service configuration and installation scripts: https://github.com/dkfz-unite/unite-environment/tree/main/applications/unite-analysis-deg
 
 ### Docker
 [Dockerfile](Dockerfile) is used to build an image of the application.
 To build an image run the following command:
 ```
-docker build -t unite.analysis.deseq2:latest .
+docker build -t unite.analysis.deg:latest .
 ```
 
 All application components should run in the same docker network.
@@ -34,16 +34,16 @@ docker network create unite
 To run application in docker run the following command:
 ```bash
 docker run \
---name unite.analysis.deseq2 \
+--name unite.analysis.deg \
 --restart unless-stopped \
 --net unite \
---net-alias deseq2.analysis.unite.net \
+--net-alias deg.analysis.unite.net \
 -p 127.0.0.1:5300:80 \
 -e ASPNETCORE_ENVIRONMENT=Release \
 -e UNITE_COMMAND=Rscript \
 -v ./data:/mnt/analysis:rw \
 -d \
-unite.analysis.deseq2:latest
+unite.analysis.deg:latest
 ```
 
 ## Usage
